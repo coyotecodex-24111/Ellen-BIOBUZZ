@@ -155,10 +155,10 @@ public class TeleopWithoutAutoFrom2024 extends OpMode {
 
         // Combine the joystick requests for each axis-motion to determine each wheel's power.
         // Set up a variable for each drive wheel to save the power level for telemetry.
-        double leftFrontPower = driveSpeed * (axial + lateral) + turnSpeed * yaw;
-        double rightFrontPower = driveSpeed * (axial - lateral) - turnSpeed * yaw;
-        double leftBackPower = driveSpeed * (axial - lateral) + turnSpeed * yaw;
-        double rightBackPower = driveSpeed * (axial + lateral) - turnSpeed * yaw;
+        double leftFrontPower = driveSpeed * (axial - lateral) + turnSpeed * yaw;
+        double rightFrontPower = driveSpeed * (axial + lateral) - turnSpeed * yaw;
+        double leftBackPower = driveSpeed * (axial + lateral) + turnSpeed * yaw;
+        double rightBackPower = driveSpeed * (axial - lateral) - turnSpeed * yaw;
 
         // Normalize the values so no wheel power exceeds 100%
         // This ensures that the robot maintains the desired motion.
