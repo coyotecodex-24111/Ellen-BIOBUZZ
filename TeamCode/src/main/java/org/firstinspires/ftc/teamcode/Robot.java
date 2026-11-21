@@ -6,6 +6,7 @@ import static java.lang.Thread.sleep;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
@@ -60,26 +61,16 @@ public class Robot {
         rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");
         rightBackDrive = hardwareMap.get(DcMotor.class, "right_back_drive");
         leftFrontDrive.setDirection(DcMotor.Direction.FORWARD);
-        leftBackDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftBackDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         rightBackDrive.setDirection(DcMotor.Direction.REVERSE);
-
-        lift = hardwareMap.get(DcMotor.class, "lift0");
-        lift.setDirection(DcMotor.Direction.FORWARD);
-
-        flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
-        flywheel.setDirection(DcMotor.Direction.FORWARD);
-        flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        leftFeed = hardwareMap.get(CRServo.class, "left_feed");
-        rightFeed = hardwareMap.get(CRServo.class, "right_feed");
 
 
         double F = 11.5; // Feedforward gain to counteract constant forces like friction.
         double P = 388;
         PIDFCoefficients pidfCoefficients = new PIDFCoefficients(P, 0, 0, F);
         // Apply the new coefficients to the motor in every loop iteration.
-        flywheel.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, pidfCoefficients);
+        //flywheel.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, pidfCoefficients);
 
 
         telemetry.addLine("Status: Initialized");
@@ -164,7 +155,7 @@ public class Robot {
         //telemetry.addData("Motor RPM", "%.2f", currentRPM);
         //telemetry.update();
     }
-    public void setTargetVelocity(double targetVelocity) {
+    /*public void setTargetVelocity(double targetVelocity) {
         curTargetVelocity = targetVelocity;
         flywheel.setVelocity(targetVelocity);
         telemetry.addData("Target Velocity ", "%.2f", targetVelocity);
@@ -176,6 +167,6 @@ public class Robot {
             curTargetVelocity -= VELOCITY_STEP;
         }
         setTargetVelocity(curTargetVelocity);
-    }
+    }*/
 
 }

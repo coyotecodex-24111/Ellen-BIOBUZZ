@@ -37,7 +37,7 @@ public class AutoMovementShared {
 
       //TOTAL: 5500ms for the flywheel to get up to speed
 
-      if(Wall){
+      /*if(Wall){
           if(Long) {
               robot.setTargetVelocity(autoLaunchLong);
               moveRobot(74, 0, 0, 0.5, 3000);
@@ -69,7 +69,7 @@ public class AutoMovementShared {
               sleep(2000);
               launchNBalls(ballsToLaunch);
           }
-      }
+      } */
 
 
       //Robot will be moving to the left

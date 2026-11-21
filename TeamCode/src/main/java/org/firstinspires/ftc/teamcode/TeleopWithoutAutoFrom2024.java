@@ -89,7 +89,7 @@ public class TeleopWithoutAutoFrom2024 extends OpMode {
 
     @Override
     public void start() {
-        robot.setTargetVelocity(robot.DEFAULT_LONG_VELOCITY);
+        //robot.setTargetVelocity(robot.DEFAULT_LONG_VELOCITY);
         telemetry.addData("Status (Version: " + VERSION + ")", "Run Time: " + runtime);
         telemetry.addData("Status", "Started for TeleOp (START)");
         telemetry.update();
@@ -99,7 +99,7 @@ public class TeleopWithoutAutoFrom2024 extends OpMode {
 
     @Override
     public void loop() {
-        robot.calculateFlywheelSpeed();
+       /* robot.calculateFlywheelSpeed();
         if (gamepad2.dpadUpWasPressed()) {
             robot.adjustVelocity(true);
         } else if (gamepad2.dpadDownWasPressed()) {
@@ -122,6 +122,8 @@ public class TeleopWithoutAutoFrom2024 extends OpMode {
         if(gamepad2.right_trigger > TRIGGER_THRESHOLD)
             robot.setTargetVelocity(robot.DEFAULT_WALL_VELOCITY);
 
+        */
+
         // Speed control with dpad. Like a knob where the top is highest.
         if (gamepad1.dpad_up) {
             driveSpeed = 0.7;
@@ -136,13 +138,15 @@ public class TeleopWithoutAutoFrom2024 extends OpMode {
             driveSpeed = 0.5;
             turnSpeed = 0.6;
         }
-        if (gamepad1.left_bumper){
+        /*if (gamepad1.left_bumper){
             robot.liftOn(true );
         } else if(gamepad1.left_trigger > TRIGGER_THRESHOLD){
             robot.liftOn(false);
         } else {
             robot.liftOff();
         }
+
+         */
 
         // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
         double axial = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
@@ -191,15 +195,15 @@ public class TeleopWithoutAutoFrom2024 extends OpMode {
         robot.leftBackDrive.setPower(leftBackPower);
         robot.rightBackDrive.setPower(rightBackPower);
 
-        double curVelocity = robot.flywheel.getVelocity();
-        double error = robot.curTargetVelocity - curVelocity;
+        //double curVelocity = robot.flywheel.getVelocity();
+        //double error = robot.curTargetVelocity - curVelocity;
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status (Version: " + VERSION + ")", "Run Time: " + runtime);
         telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
         telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
         telemetry.addData("Target Velocity ", "%.2f", robot.curTargetVelocity);
-        telemetry.addData("Current Velocity", "%.2f", curVelocity);
-        telemetry.addData("Error","%.2f", error);
+        //telemetry.addData("Current Velocity", "%.2f", curVelocity);
+        //telemetry.addData("Error","%.2f", error);
         //telemetry.addData("Error", "%.2f", error);
         telemetry.update();
     }
